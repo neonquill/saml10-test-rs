@@ -1,0 +1,14 @@
+[workspace]
+members = [
+    "atsaml10e16a",
+    "blink",
+]
+
+[profile.release]
+# https://blog.rust-lang.org/2018/02/15/Rust-1.24#incremental-compilation
+# Should provide better optimizations.
+codegen-units = 1
+# Debugging symbols won't show up on the processor, so always enable them.
+debug = true
+# Enable link time optimizations.
+lto = true

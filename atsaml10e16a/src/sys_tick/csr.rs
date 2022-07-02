@@ -1,0 +1,122 @@
+#[doc = "Register `CSR` reader"]
+pub struct R(crate::R<CSR_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<CSR_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl From<crate::R<CSR_SPEC>> for R {
+    #[inline(always)]
+    fn from(reader: crate::R<CSR_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `CSR` writer"]
+pub struct W(crate::W<CSR_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<CSR_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl From<crate::W<CSR_SPEC>> for W {
+    #[inline(always)]
+    fn from(writer: crate::W<CSR_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `ENABLE` reader - SysTick enable"]
+pub type ENABLE_R = crate::BitReader<bool>;
+#[doc = "Field `ENABLE` writer - SysTick enable"]
+pub type ENABLE_W<'a> = crate::BitWriter<'a, u32, CSR_SPEC, bool, 0>;
+#[doc = "Field `TICKINT` reader - Tick interrupt"]
+pub type TICKINT_R = crate::BitReader<bool>;
+#[doc = "Field `TICKINT` writer - Tick interrupt"]
+pub type TICKINT_W<'a> = crate::BitWriter<'a, u32, CSR_SPEC, bool, 1>;
+#[doc = "Field `CLKSOURCE` reader - Clock source"]
+pub type CLKSOURCE_R = crate::BitReader<bool>;
+#[doc = "Field `CLKSOURCE` writer - Clock source"]
+pub type CLKSOURCE_W<'a> = crate::BitWriter<'a, u32, CSR_SPEC, bool, 2>;
+#[doc = "Field `COUNTFLAG` reader - Count flag"]
+pub type COUNTFLAG_R = crate::BitReader<bool>;
+#[doc = "Field `COUNTFLAG` writer - Count flag"]
+pub type COUNTFLAG_W<'a> = crate::BitWriter<'a, u32, CSR_SPEC, bool, 16>;
+impl R {
+    #[doc = "Bit 0 - SysTick enable"]
+    #[inline(always)]
+    pub fn enable(&self) -> ENABLE_R {
+        ENABLE_R::new((self.bits & 1) != 0)
+    }
+    #[doc = "Bit 1 - Tick interrupt"]
+    #[inline(always)]
+    pub fn tickint(&self) -> TICKINT_R {
+        TICKINT_R::new(((self.bits >> 1) & 1) != 0)
+    }
+    #[doc = "Bit 2 - Clock source"]
+    #[inline(always)]
+    pub fn clksource(&self) -> CLKSOURCE_R {
+        CLKSOURCE_R::new(((self.bits >> 2) & 1) != 0)
+    }
+    #[doc = "Bit 16 - Count flag"]
+    #[inline(always)]
+    pub fn countflag(&self) -> COUNTFLAG_R {
+        COUNTFLAG_R::new(((self.bits >> 16) & 1) != 0)
+    }
+}
+impl W {
+    #[doc = "Bit 0 - SysTick enable"]
+    #[inline(always)]
+    pub fn enable(&mut self) -> ENABLE_W {
+        ENABLE_W::new(self)
+    }
+    #[doc = "Bit 1 - Tick interrupt"]
+    #[inline(always)]
+    pub fn tickint(&mut self) -> TICKINT_W {
+        TICKINT_W::new(self)
+    }
+    #[doc = "Bit 2 - Clock source"]
+    #[inline(always)]
+    pub fn clksource(&mut self) -> CLKSOURCE_W {
+        CLKSOURCE_W::new(self)
+    }
+    #[doc = "Bit 16 - Count flag"]
+    #[inline(always)]
+    pub fn countflag(&mut self) -> COUNTFLAG_W {
+        COUNTFLAG_W::new(self)
+    }
+    #[doc = "Writes raw bits to the register."]
+    #[inline(always)]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "SysTick Control and Status Register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [csr](index.html) module"]
+pub struct CSR_SPEC;
+impl crate::RegisterSpec for CSR_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [csr::R](R) reader structure"]
+impl crate::Readable for CSR_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [csr::W](W) writer structure"]
+impl crate::Writable for CSR_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets CSR to value 0"]
+impl crate::Resettable for CSR_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
+    }
+}
